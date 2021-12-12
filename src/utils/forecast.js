@@ -14,12 +14,17 @@ const forecast = (latitude, longtitude, callback) => {
     } else if (body.error) {
       callback("Unable to find location. Try another search", undefined);
     } else {
+      // console.log(body.current);
       callback(
         undefined,
         body.current.weather_descriptions[0] +
           ". It is currently " +
           body.current.temperature +
-          " degrees out. It feels like " +
+          " degrees out. The wind speed is " +
+          body.current.wind_speed +
+          " on the direction of " +
+          body.current.wind_dir +
+          ". It feels like " +
           body.current.feelslike +
           " degress out."
       );
